@@ -42,17 +42,29 @@ def luo_graafi(eri_päivä = 0):
 
     vastaus = requests.get(api_url)
     binaari = vastaus.content
-    ulos_json = json.loads(binaari)
-    ulos_list = list(ulos_json)
-    ulos_tunnit = []
-    ulos_hinnat = []
+    try:
+        ulos_json = json.loads(binaari)
+        ulos_list = list(ulos_json)
 
-    for tunti in ulos_list:
-        als = str(tunti.get("aikaleima_suomi")) #als aikaleimasuomi
-        als_trimmed = als.split("T")
-        hinta = float(tunti.get("hinta"))
-        ulos_tunnit.append(als_trimmed[1].split(":")[0])
-        ulos_hinnat.append(hinta)
+        ulos_tunnit = []
+        ulos_hinnat = []
+
+        for tunti in ulos_list:
+            als = str(tunti.get("aikaleima_suomi")) #als aikaleimasuomi
+            als_trimmed = als.split("T")
+            hinta = float(tunti.get("hinta"))
+            ulos_tunnit.append(als_trimmed[1].split(":")[0])
+            ulos_hinnat.append(hinta)
+
+    except Exception as e:
+        print("Joko käytit liikaa API kutsuja (60 tunnissa sallittu) tai huomisen dataa ei ole julkaistu, yleensä klo 14:00 eteenpäin. Alla tulkin sepustus")
+        print("\n")
+        print(str(e))
+        print("\nYritä myödemmin uudelleen")
+        aiempi_päivämäärä()
+    
+    
+ 
 
     #print(ulos_hinnat)
 
