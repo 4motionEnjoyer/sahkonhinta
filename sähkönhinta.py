@@ -33,13 +33,11 @@ from matplotlib.backends.backend_tkagg import (
 #Funktiot
 ##############
 
-def thread_kellonkyttäys():
-    while(True):
-        if datetime.datetime.now().time() > datetime.time(0,0, 0) and datetime.datetime.now().time() < datetime.time(14, 15, 00) and pvm_diff == 0:
-            oikea_nappi["state"] = DISABLED
-        else:
-            oikea_nappi["state"] = NORMAL 
-        sleep(60)
+def kellonkyttäys():
+    if datetime.datetime.now().time() > datetime.time(0,0, 0) and datetime.datetime.now().time() < datetime.time(14, 15, 00) and pvm_diff == 0:
+        oikea_nappi["state"] = DISABLED
+    else:
+        oikea_nappi["state"] = NORMAL 
 
 
 def varoitus_ikkuna():
@@ -78,8 +76,6 @@ def keksi_data():
 
 
 def hae_data():
-
-
     global päivät_tietue
     global pvm
     pvm = str(datetime.datetime.now() + datetime.timedelta(days=0)).split()[0]
@@ -181,7 +177,7 @@ def seuraava_päivämäärä():
             oikea_nappi["state"] = DISABLED
         if (pvm_diff < 1):
             vasen_nappi["state"] = NORMAL
-        
+        kellonkyttäys() 
         piirturi()
 
 
@@ -245,6 +241,9 @@ def argumenttiparsija():
 def main():
     argumentit, alkm = argumenttiparsija()
     global päivät_tietue
+    
+    kellonkyttäys()
+
     if "db" in argumentit:
         global db_lippu 
         db_lippu = True
@@ -257,8 +256,6 @@ def main():
         hae_data()
 
     piirturi()
-    vk_säie = threading.Thread(target = thread_kellonkyttäys)
-    vk_säie.start()
     root.mainloop()
 
 ####################
