@@ -5,8 +5,13 @@ Versio 0.10
 
 Asennusohjeet;  
 1) asenna python 3
-2) kloonaa repo koneelle tai lataa zip tai imuta release
-3) navigoi sahkonhinta kansioon ja aja  
+https://www.python.org/downloads/
+![image](https://github.com/4motionEnjoyer/sahkonhinta/assets/99203040/6ec30cbc-bd33-4e33-9941-f3a89e08d3a6)
+![image](https://github.com/4motionEnjoyer/sahkonhinta/assets/99203040/9950461f-1287-4dca-95d9-a9b31044d72f)
+
+
+3) kloonaa repo koneelle tai lataa zip tai imuta release
+4) navigoi sahkonhinta kansioon ja aja  
    $ python asennus.py  
 5) tämän jälkeen  
    $ python sähkönhinta.pyw  
