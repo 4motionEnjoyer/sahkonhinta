@@ -16,8 +16,10 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-from tkinter import *
-from tkinter import messagebox
+#from tkinter import *
+#from tkinter import messagebox
+import ttkbootstrap as ttk
+#from ttkbootstrap import messagebox
 
 matplotlib.use('TkAgg')
 
@@ -33,11 +35,11 @@ from matplotlib.backends.backend_tkagg import (
 
 def kellonkyttäys():
     if datetime.datetime.now().time() > datetime.time(0,0, 0) and datetime.datetime.now().time() < datetime.time(14, 15, 00) and pvm_diff == 0:
-        oikea_nappi["state"] = DISABLED
+        oikea_nappi["state"] = ttk.DISABLED
     elif pvm_diff == 1:
-        oikea_nappi["state"] = DISABLED
+        oikea_nappi["state"] = ttk.DISABLED
     else:
-        oikea_nappi["state"] = NORMAL 
+        oikea_nappi["state"] = ttk.NORMAL 
 
 
 def varoitus_ikkuna():
@@ -45,7 +47,7 @@ def varoitus_ikkuna():
 #    päällimmäinen.geometry("400x150")
 #    päällimmäinen.title("Varoitus")
 #    Label(päällimmäinen, text = "Jostain syystä dataa ei saatu. Nordpool julkaisee seuraavan päivän datat ~14:00")
-    v_ikkuna = messagebox.showerror("Varoitus", "Sovellus ei saanut dataa netistä")
+    v_ikkuna = ttk.messagebox.showerror("Varoitus", "Sovellus ei saanut dataa netistä")
     if v_ikkuna == "No":
         exit()
     else:
@@ -158,9 +160,9 @@ def aiempi_päivämäärä():
     global pvm_diff
     pvm_diff -= 1
     if (pvm_diff == -1):
-        vasen_nappi["state"] = DISABLED
+        vasen_nappi["state"] = ttk.DISABLED
     if (pvm_diff < 1):
-        oikea_nappi["state"] = NORMAL
+        oikea_nappi["state"] = ttk.NORMAL
 
     piirturi()
 
@@ -174,9 +176,9 @@ def seuraava_päivämäärä():
     else:
         pvm_diff += 1
         if (pvm_diff == 1):
-            oikea_nappi["state"] = DISABLED
+            oikea_nappi["state"] = ttk.DISABLED
         if (pvm_diff < 1):
-            vasen_nappi["state"] = NORMAL
+            vasen_nappi["state"] = ttk.NORMAL
         kellonkyttäys() 
         piirturi()
 
@@ -196,7 +198,7 @@ def piirturi():
 #else:
 #        ulos_tietue = keksi_data()
 
-    teksti.delete("1.0", END)
+    teksti.delete("1.0", ttk.END)
     teksti.insert("end", str(datetime.datetime.now().date() + datetime.timedelta(days = pvm_diff)) + " sähkön hinta")
 
     global figure
@@ -278,7 +280,7 @@ db_lippu = False
 keksi_lippu = False
 pvm = str(datetime.datetime.now()).split()[0]
 pvm_diff = 0
-root = Tk()
+root =  ttk.Window()
 
 #mpl canvas asetukset
 figure = Figure(figsize=(6, 4), dpi=100)
@@ -290,10 +292,10 @@ root.title("Sähkön hinta")
 root.protocol("WM_DELETE_WINDOW", sulku)
 
 # UI olioiden luonti
-vasen_nappi = Button(root, text = "<", bd= "5", command = aiempi_päivämäärä)
-oikea_nappi = Button(root, text = ">", bd= "5", command = seuraava_päivämäärä)
-teksti = Text(root, height = 1, width = 40)
-vasen_nappi.pack(side = "left")
+vasen_nappi = ttk.Button(root, text = "<", command = aiempi_päivämäärä)
+oikea_nappi = ttk.Button(root, text = ">", command = seuraava_päivämäärä)
+teksti = ttk.Text(root, height = 1, width = 40)
+vasen_nappi.pack(side = "left", padx=5, pady=10)
 oikea_nappi.pack(side = "right")
 teksti.pack(side = "top")
 teksti.insert("end", pvm + " sähkön hinta")

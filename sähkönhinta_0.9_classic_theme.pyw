@@ -16,10 +16,8 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-#from tkinter import *
-#from tkinter import messagebox
-from ttkbootstrap import * as tkinter
-from ttkbootstrap import tkinter.messagebox
+from tkinter import *
+from tkinter import messagebox
 
 matplotlib.use('TkAgg')
 
