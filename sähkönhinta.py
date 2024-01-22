@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python3
 #
 ##################################################
 #Sähkönhinta widgetti, tänään +-1 pvä
