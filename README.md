@@ -15,3 +15,6 @@ jonkinlainen trendiviiva parin viimeviikon ajalta / uusi ali-ikkuna kokonaan. om
 
 
 ![image](https://github.com/4motionEnjoyer/sahkonhinta/assets/99203040/b0337cf8-d097-4222-a69b-3a4cfde31c1a)
+Fig 1. The old skin from 0.9 version 
+  
+
