@@ -5,7 +5,11 @@ Versio 0.10
 
 Asennusohjeet;  
 1) asenna python 3
-2) kloonaa repo koneelle tai lataa zip
+2) kloonaa repo koneelle tai lataa zip tai imuta release
+3) navigoi sahkonhinta kansioon ja aja  
+   $ python asennus.py  
+5) tämän jälkeen  
+   $ python sähkönhinta.pyw  
 
 Toteutetuneet ominaisuudet:   
 Varoituslaatikko jos jotain menee pieleen -> 0.5   
