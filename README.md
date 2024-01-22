@@ -4,12 +4,12 @@ Hakee datan https://www.sahkohinta-api.fi
 Versio 0.10
 
 Toteutetuneet ominaisuudet:   
-Varoituslaatikko jos jotain menee pieleen -> 0.5 
-Debug ja offline testausmahdollisuus ->  0.6 
-Sovelluksen käynnistyessä -1, 0 ja +1 päivien datan imuttaminen joten päivien välillä liikkuminen on jouhevampaa -> 0.7 
-Windows installeri kunnossa -> 0.9
-Linux installeri melkein kunnossa -> 0.9  
-Uusi ulkoasu -> 0.10
+Varoituslaatikko jos jotain menee pieleen -> 0.5   
+Debug ja offline testausmahdollisuus ->  0.6   
+Sovelluksen käynnistyessä -1, 0 ja +1 päivien datan imuttaminen joten päivien välillä liikkuminen on jouhevampaa -> 0.7   
+Windows installeri kunnossa -> 0.9  
+Linux installeri melkein kunnossa -> 0.9    
+Uusi ulkoasu -> 0.10  
   
 Suunnitellut ominaisuudet:  
 tietojen tallentaminen paikallisesti niin vielä vähemmä api kutsuja  
