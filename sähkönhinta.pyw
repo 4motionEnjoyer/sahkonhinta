@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#
+#version 0.9
 ##################################################
 #Sähkönhinta widgetti, tänään +-1 pvä
 #By 4motionEnjoyer / Leevi S.
@@ -16,10 +16,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-#from tkinter import *
-#from tkinter import messagebox
 import ttkbootstrap as ttk
-#from ttkbootstrap import messagebox
 
 matplotlib.use('TkAgg')
 
@@ -43,10 +40,6 @@ def kellonkyttäys():
 
 
 def varoitus_ikkuna():
-#    päällimmäinen = Toplevel(root)
-#    päällimmäinen.geometry("400x150")
-#    päällimmäinen.title("Varoitus")
-#    Label(päällimmäinen, text = "Jostain syystä dataa ei saatu. Nordpool julkaisee seuraavan päivän datat ~14:00")
     v_ikkuna = ttk.messagebox.showerror("Varoitus", "Sovellus ei saanut dataa netistä")
     if v_ikkuna == "No":
         exit()
@@ -56,17 +49,7 @@ def varoitus_ikkuna():
 def keksi_data():
     global pävät_tietue
     global pvm
-    #päivät_tietue["ulos_tunnit"] = list(range(0,24))
     print (päivät_tietue["ulos_tunnit"])
- #   päivät_tietue["ulos_hinnat_eilen"] = []
-  #  päivät_tietue["ulos_hinnat_tänään"] = []
-   # päivät_tietue["ulos_hinnat_huomenna"] = []
-    
-#    ulos_tunnit = range(0, 24)
-#    ulos_hinnat_eilen = []
-#    ulos_hinnat_tänään = []
-#    ulos_hinnat_huomenna = []
-
 
     while(len(päivät_tietue["ulos_hinnat_tänään"]) < 24):
         päivät_tietue["ulos_hinnat_eilen"].append(random.randrange(1, 30))
@@ -74,7 +57,6 @@ def keksi_data():
         päivät_tietue["ulos_hinnat_huomenna"].append(random.randrange(1, 30))
 
     pvm = str(datetime.datetime.now() + datetime.timedelta(days=0)).split()[0]
-    #return hinta_tietue
 
 
 def hae_data():
@@ -183,20 +165,11 @@ def seuraava_päivämäärä():
         piirturi()
 
 
-#def piirturi(eri_päivä = 0):
 def piirturi(): 
     global keksi_lippu
     global pvm_diff
     global pvm
     global päivät_tietue
-
-    #global ulos_hinnat_eilen, ulos_hinnat_tänään, ulos_hinnat_huomenna
-#    if not keksi_lippu:
-#        ulos_tunnit, ulos_hinnat, pvm = hae_data(eri_päivä)  
-#         ulos_tunnit, ulos_hinnat_eilen, ulos_hinnat_tänään, ulos_hinnat_huomenna = hae_data() 
-#       pass 
-#else:
-#        ulos_tietue = keksi_data()
 
     teksti.delete("1.0", ttk.END)
     teksti.insert("end", str(datetime.datetime.now().date() + datetime.timedelta(days = pvm_diff)) + " sähkön hinta")
@@ -250,7 +223,6 @@ def main():
         global db_lippu 
         db_lippu = True
     if "offline" in argumentit:
-#        ulos_tunnit, ulos_hinnat, pvm = keksi_data()
         global keksi_lippu
         keksi_lippu = True
         keksi_data()
@@ -271,10 +243,6 @@ päivät_tietue["ulos_tunnit"] = list(range(0,24))
 päivät_tietue["ulos_hinnat_eilen"] = []
 päivät_tietue["ulos_hinnat_tänään"] = []
 päivät_tietue["ulos_hinnat_huomenna"] = []
-
-#ulos_hinnat_eilen = []
-#ulos_hinnat_tänään = []
-#ulos_hinnat_huomenna = []
 
 db_lippu = False
 keksi_lippu = False
@@ -299,8 +267,6 @@ vasen_nappi.pack(side = "left", padx=5, pady=10)
 oikea_nappi.pack(side = "right")
 teksti.pack(side = "top")
 teksti.insert("end", pvm + " sähkön hinta")
-
-mikäpvä = 0
     
 #Voidaan ajaa vain suoraan invokoituna
 if __name__ == "__main__": 
