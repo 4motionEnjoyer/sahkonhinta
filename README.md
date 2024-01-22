@@ -3,6 +3,10 @@ Pystyy katsomaan myös eilisen ja huomisen hinnat.
 Hakee datan https://www.sahkohinta-api.fi  
 Versio 0.10
 
+Asennusohjeet;  
+1) asenna python 3
+2) kloonaa repo koneelle tai lataa zip
+
 Toteutetuneet ominaisuudet:   
 Varoituslaatikko jos jotain menee pieleen -> 0.5   
 Debug ja offline testausmahdollisuus ->  0.6   
