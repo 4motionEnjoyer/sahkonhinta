@@ -18,8 +18,6 @@ import matplotlib.pyplot as plt
 import matplotlib
 from tkinter import *
 from tkinter import messagebox
-import threading
-import time
 
 matplotlib.use('TkAgg')
 
@@ -35,6 +33,8 @@ from matplotlib.backends.backend_tkagg import (
 
 def kellonkyttäys():
     if datetime.datetime.now().time() > datetime.time(0,0, 0) and datetime.datetime.now().time() < datetime.time(14, 15, 00) and pvm_diff == 0:
+        oikea_nappi["state"] = DISABLED
+    elif pvm_diff == 1:
         oikea_nappi["state"] = DISABLED
     else:
         oikea_nappi["state"] = NORMAL 
