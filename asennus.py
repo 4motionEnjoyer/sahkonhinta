@@ -37,7 +37,9 @@ def main():
 
     
     
-    if platform == "win32": alusta = "win"
+    if platform == "win32": 
+        alusta = "win"
+        kohde = os.path.join( "C:\\", "Users", str(cmd("whoami")).split("\\")[2], "AppData", "Roaming", "Microsoft", "Windows", "Start Menu", "Programs", "Startup", "sähkönhinta.pyw")
     if platform == "linux" or platform == "linux2": 
         alusta = "lin"
         binpolku = "/home/" + str(cmd("whoami")) + "/.local/bin/sähkönhinta.py"
@@ -45,12 +47,12 @@ def main():
         match alusta:
             case "win":
                 try:
-                    cmd("del sähkönhinta.bat")
+                    os.remove(kohde)
                     print("Asennus poistettu")
-                    exit()
+                    
                 except:
                     print("Softaa ei ole asennettu")
-                    exit()
+                exit()    
 
             case "lin":
                 try:
@@ -59,10 +61,10 @@ def main():
                     arsi = subprocess.run(käsky)
                     print(arsi)
                     print("Asennus poistettu")
-                    exit()
+                    
                 except Exception as e:
                     print("Softan poisto epäonnistui: " + str(e))
-                    exit()
+                exit()    
 
 
     if alusta == "win": print("\n Haluatko pikakuvakkeen työkansioon? j/e")
@@ -71,9 +73,15 @@ def main():
     match vastaus:
         case "j":
             if alusta == "win":
-                with open("sähkönhinta.bat", "w") as filu:
-                    filu.write("@echo off \n")
-                    filu.write("python3 sähkönhinta.py \n")
+                #with open("sähkönhinta.bat", "w") as filu:
+                #    filu.write("@echo off \n")
+                #    filu.write("")
+                #    filu.write("python sähkönhinta.pyw \n")
+                
+                #print (kohde)   
+                #exit()
+                kohde = os.path.join( "C:\\", "Users", str(cmd("whoami")).split("\\")[2], "AppData", "Roaming", "Microsoft", "Windows", "Start Menu", "Programs", "Startup\\")
+                shutil.copy("sähkönhinta.pyw", kohde)
                 print("\n Asennus onnistui")
             
             if alusta == "lin":

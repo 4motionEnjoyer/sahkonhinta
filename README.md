@@ -6,6 +6,8 @@ Toteutetuneet ominaisuudet:
 Varoituslaatikko jos jotain menee pieleen
 Debug ja offline testausmahdollisuus
 Sovelluksen käynnistyessä -1, 0 ja +1 päivien datan imuttaminen joten päivien välillä liikkuminen on jouhevampaa
+Windows installeri kunnossa
+Linux installeri melkein kunnossa
 
 Suunnitellut ominaisuudet:
 tietojen tallentaminen paikallisesti niin vielä vähemmä api kutsuja
