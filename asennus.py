@@ -24,7 +24,7 @@ def main():
     vastaus = input()
     match vastaus:
         case "a":
-            paketit = [ "matplotlib", "numpy", "requests" ]
+            paketit = [ "matplotlib", "numpy", "requests", "ttkbootstrap" ]
             for paketti in paketit:
                 subprocess.check_call([sys.executable, "-m", "pip", "install", paketti])
                 
